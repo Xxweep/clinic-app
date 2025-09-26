@@ -1,0 +1,291 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-size: large;
+    font-weight: bold;
+    font-family:initial,sans-serif , Arial , Helvetica  , cursive ;
+
+    
+
+
+}
+
+
+/* الطابور */
+
+/* static/style.css */
+
+/* === إعدادات عامة وخطوط === */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap' );
+
+:root {
+    --primary-color: #0d6efd; /* أزرق أكثر حيوية */
+    --secondary-color: #198754; /* أخضر للنجاح */
+    --danger-color: #dc3545; /* أحمر للخطر */
+    --light-gray: #f8f9fa;
+    --dark-gray: #212529;
+    --text-color: #495057;
+    --border-color: #dee2e6;
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    direction: rtl;
+    background-color: var(--light-gray);
+    color: var(--text-color);
+    margin: 0;
+    padding: 10px; /* تقليل الحشو الخارجي للهواتف */
+    line-height: 1.7;
+}
+
+/* === تصميم الحاويات الرئيسية === */
+.container, .admin-main, .queue-container {
+    max-width: 1200px;
+    margin: 15px auto;
+    padding: 25px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: var(--box-shadow);
+}
+
+h1, h2 {
+    color: var(--dark-gray);
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+h2.center-heading {
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+    display: inline-block;
+    width: auto;
+}
+/* تصميم الهيدر */
+header.head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgb(6, 118, 118);
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 20px 20px 30px rgba(0,0,0,0.2);
+}
+header.head a{
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;}
+
+/* === تصميم الفورم (صفحة التسجيل) === */
+form { display: flex; flex-direction: column; gap: 15px; }
+input, select, textarea {
+    width: 100%; padding: 12px; border: 1px solid var(--border-color);
+    border-radius: 8px; font-family: 'Cairo', sans-serif; font-size: 1em;
+    box-sizing: border-box; /* مهم جداً للتجاوب */
+}
+input:focus, select:focus, textarea:focus {
+    outline: none; border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.2);
+}
+.container-index{
+    background-color: rgb(6, 118, 118);
+    width: 50%;
+    margin: auto;
+    margin-top: 50px;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.2);
+}
+.container-index h1{
+    color: orange;
+    text-align: center;
+    margin-bottom: 20px;
+
+}
+
+
+/* === تصميم الأزرار === */
+button, .btn {
+    padding: 12px 20px; border: none; border-radius: 8px;
+    font-family: 'Cairo', sans-serif; font-size: 1.1em; font-weight: 600;
+    cursor: pointer; transition: all 0.2s ease-in-out;
+}
+button:hover, .btn:hover { transform: translateY(-2px); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+button[type="submit"], .btn-primary { background-color:  var(--primary-color);
+   color: white;
+  padding: 10px; }
+.btn-done { background-color: var(--secondary-color); color: white; }
+.btn-cancel, .btn-cancel-admin, .logout-btn button { background-color: var(--danger-color); color: white; }
+header .btn{
+    background-color: orange;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    width: 100px;
+    height: 30px;
+    font-size: 15px;
+}
+
+/* === تصميم صفحة الأدمن === */
+.admin-header, header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+.table-container { overflow-x: auto; }
+.returning-tag { color: var(--primary-color); font-size: 0.8em; display: block; }
+
+/* === التصميم الاحترافي للجداول (Desktop First) === */
+.responsive-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+.responsive-table thead {
+    background-color: var(--primary-color);
+    color: white;
+}
+.responsive-table th, .responsive-table td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+}
+.responsive-table tbody tr:nth-child(even) { background-color: var(--light-gray); }
+.responsive-table tbody tr:hover { background-color: #e9ecef; }
+
+/* === السحر الحقيقي: التصميم المتجاوب للجداول (Mobile View) === */
+@media (max-width: 768px) {
+    .responsive-table thead {
+        display: none; /* 1. إخفاء العناوين الرئيسية */
+    }
+
+    .responsive-table tr {
+        display: block; /* 2. تحويل كل صف إلى بلوك (بطاقة) */
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        margin-bottom: 15px;
+        padding: 10px;
+        box-shadow: var(--box-shadow);
+    }
+
+    .responsive-table td {
+        display: flex; /* 3. استخدام Flexbox للتحكم في الخلية */
+        justify-content: space-between; /* وضع العنوان يميناً والمحتوى يساراً */
+        align-items: center;
+        text-align: left; /* محاذاة المحتوى لليسار */
+        padding: 10px 5px;
+        border-bottom: 1px dotted var(--border-color); /* خط منقط بين الحقول */
+    }
+
+    .responsive-table td:last-child {
+        border-bottom: none; /* إزالة الخط من آخر حقل */
+    }
+
+    .responsive-table td::before {
+        content: attr(data-label); /* 4. جلب العنوان من data-label */
+        font-weight: bold;
+        color: var(--primary-color);
+        padding-left: 10px;
+        text-align: right; /* محاذاة العنوان لليمين */
+    }
+
+    /* تنسيق خاص لخلايا الأزرار والملاحظات */
+    .responsive-table td.action-buttons,
+    .responsive-table td[data-label="إضافة ملاحظة جديدة"] {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .responsive-table td.action-buttons form,
+    .responsive-table td[data-label="إضافة ملاحظة جديدة"] form {
+        width: 100%;
+    }
+    .responsive-table td.action-buttons button,
+    .responsive-table td[data-label="إضافة ملاحظة جديدة"] button {
+        width: 100%;
+    }
+}
+
+/* === تصميم صفحة الطابور (متجاوب أيضاً) === */
+.queue-container { text-align: center; }
+.queue-container h2.turn { color: var(--secondary-color); font-size: 2em; }
+.queue-container p.position-info { font-size: 1.5em; }
+
+/* === رسائل الخطأ (Flash) === */
+.flash-error {
+    background-color: #f8d7da; color: #721c24; padding: 15px;
+    border: 1px solid #f5c6cb; border-radius: 8px; margin-bottom: 20px;
+}
+
+
+/* تسجيل دخول الادمن */
+.txt h1{
+    color:rgb(6, 118, 118) ;
+    font-size: 33px;
+    font-weight: bolder;
+    margin-top: 40px;
+    text-align: center;
+    font-weight: bolder;
+    font-style: italic;
+    
+}
+
+.box{
+    background: rgb(6, 118, 118) ;
+    border-radius: 20px;
+    box-shadow: 10px 10px 20px  rgba(0,0,0,0.2);
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 5px;
+    border: solid 1px white;
+}
+
+.box-login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    width: 300px;
+    text-align: center;
+    background: teal;
+    box-shadow: 0 10px 20px 30px blur(0,0,0,0.2);
+     ;
+
+    
+}
+.box-login h2{
+    color: white;
+    text-align: center;
+}
+.btn-login{
+    width: 80px;
+    height: 35px;
+    border: none;
+    border-radius: 5px;
+    background-color: white;
+    color: rgb(6, 118, 118);
+    font-size: large;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.3s ease;
+}
+.btn-login:hover{
+    background-color: rgb(6, 118, 118);
+    color: white;
+}
+
+
+
+
