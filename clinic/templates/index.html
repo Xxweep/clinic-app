@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل حجز جديد</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stayle.css') }}">
+</head>
+<body>
+    <header class="head">
+        <a href="#">logo</a>
+        <a href="#">Nova</a>
+    </header>
+    <div class="container-index">
+        <h1>تسجيل حجز جديد</h1>
+        
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="flash-error" style="color: red; margin-bottom: 15px;">{{ messages[0] }}</div>
+            {% endif %}
+        {% endwith %}
+
+        <form action="{{ url_for('register') }}" method="POST">
+            <input type="text" name="name" placeholder="الاسم الكامل" required>
+            <input type="tel" name="phone" placeholder="رقم الهاتف (يبدأ بـ 07)" required>
+            <input type="number" name="age" placeholder="العمر" required>
+            
+            <select name="gender" required>
+                <option value="" disabled selected>اختر الجنس</option>
+                <option value="ذكر">ذكر</option>
+                <option value="أنثى">أنثى</option>
+            </select>
+
+            <textarea name="allergies" placeholder="هل لديك حساسية من أدوية معينة؟ (اختياري)"></textarea>
+
+            <button type="submit">تسجيل</button>
+        </form>
+    </div>
+</body>
+</html>
